@@ -1,0 +1,145 @@
+.navv{
+    background-color: #20232a;
+    color: #ffffff !important;
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+}
+
+.navv .container{
+    height: 100% !important;
+}
+
+.navv .container .navbar{
+    height: 100% !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+.top-nav-logo{
+    position: relative;
+    display: block;
+    width: 130px !important;
+}
+
+.navfont{
+    position: absolute;
+    display: inline-block;
+    font-family: 'Ubuntu', 'Noto sans KR', sans-serif;
+    color: #61DAFB;
+    font-weight: 700;
+    font-size: 23px;  
+    left: 43px;
+}
+
+.navlogo{
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+}
+
+.top-nav-logo:hover {
+    text-decoration: none !important;
+}
+
+.top-nav-item{
+    display: inline-block;
+    font-family: 'Ubuntu', 'Noto sans KR', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 !important;
+    padding: 0 20px !important;
+    font-size: 18px;
+    height: 30px !important;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border: none !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+.top-nav-item:hover{
+    background-color: rgba(0, 0, 0, 0);
+    color: #61DAFB;
+    text-decoration: none;
+}
+
+.top-nav-item:focus{
+    box-shadow: none !important;
+    background: none !important;
+    border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.top-nav-item:active{
+    background: none !important;
+    border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.nav-right-wrapper{
+    position: absolute;
+    top: 0;
+    right: 120px;
+}
+
+.nav-right-item{
+    position: relative;
+    color: white !important;
+    width: 50px;
+    height: 60px;
+    display: inline-block;
+    cursor: pointer;    
+}
+
+.nav-right-item-active{
+    position: relative;
+    color: #61DAFB !important;
+    width: 50px;
+    height: 60px;
+    display: inline-block;
+    cursor: pointer;    
+}
+
+.nav-right-item span, .nav-right-item-active span{
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 7.5px !important;
+}
+
+.nav-right-item-new-message{
+    background-color: #DB3545;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    font-size: 11px;
+    line-height: 17px;
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    color: white;
+    top: 15px;
+    right: 3px;
+}
+
+.login-logout-button{
+    position: absolute;
+    right: 0;
+    top: -12px;
+    font-size: 16px !important;
+    font-family: 'Ubuntu', 'Noto sans KR', sans-serif;
+    background: none !important;
+    padding: 8px 20px !important;
+    border: 1.5px solid white !important;
+    border-radius: 42px !important;
+    color: white;
+    font-weight: 500;
+}
+
+.login-logout-button:hover{
+    border: 1.5px solid #61DAFB !important;
+    color: #61DAFB;
+}
+

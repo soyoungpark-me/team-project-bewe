@@ -1,0 +1,20 @@
+CREATE TABLE `BeWe`.`notifications` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `users_idx` INT NOT NULL,
+  `contents` VARCHAR(225) NOT NULL,
+  `url` VARCHAR(225) NOT NULL,
+  `flag` TINYINT NOT NULL DEFAULT 0,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_notifications_1_idx` (`users_idx` ASC),
+  CONSTRAINT `fk_notifications_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+INSERT INTO notifications VALUES(1, 1, '알림 내용1', 'http://www.naver.com', 0, NULL);
+INSERT INTO notifications VALUES(2, 1, '알림 내용2', 'http://www.facebook.com', 0, NULL);
+INSERT INTO notifications VALUES(3, 2, '알림 내용3', 'http://www.nate.com', 0, NULL);
+INSERT INTO notifications VALUES(4, 3, '알림 내용4', 'http://www.naver.com', 0, NULL);
+INSERT INTO notifications VALUES(5, 4, '알림 내용5', 'http://www.naver.com', 0, NULL);

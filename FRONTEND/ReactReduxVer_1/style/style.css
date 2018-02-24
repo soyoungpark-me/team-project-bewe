@@ -1,0 +1,11 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Sans:400,700);
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    background-color: #f9f9f9;
+    font-family: Noto sans KR, dotum, sans-serif
+}

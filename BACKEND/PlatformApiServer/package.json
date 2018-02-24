@@ -1,0 +1,29 @@
+{
+  "name": "authapiserver",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "axios": "^0.17.1",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "events": "^1.1.1",
+    "express": "~4.15.5",
+    "express-validation": "^1.0.2",
+    "joi": "^13.1.0",
+    "jsonwebtoken": "^8.1.0",
+    "moment": "^2.20.1",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.14.11",
+    "redis": "^2.8.0",
+    "serve-favicon": "~2.4.5",
+    "socket.io": "^2.0.4",
+    "winston": "^2.4.0"
+  }
+}

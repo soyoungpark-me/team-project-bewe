@@ -1,0 +1,228 @@
+CREATE DATABASE `BeWe` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE `BeWe`.`users` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NOT NULL,
+  `pw` VARCHAR(50) NOT NULL,
+  `nickname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `avatar` VARCHAR(225) NULL,
+  `salt` VARCHAR(8) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`));
+
+ALTER TABLE `BeWe`.`users` 
+ADD UNIQUE INDEX `id_UNIQUE` (`id` ASC);
+
+CREATE TABLE `BeWe`.`games` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(225) NOT NULL,
+  `genre` VARCHAR(45) NOT NULL,
+  `image` VARCHAR(225) NOT NULL,
+  `flag` TINYINT NOT NULL,
+  `users_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_games_1_idx` (`users_idx` ASC),
+  CONSTRAINT `fk_games_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`game_result` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `data` VARCHAR(225) NOT NULL,
+  `games_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_game_result_1_idx` (`games_idx` ASC),
+  CONSTRAINT `fk_game_result_1`
+    FOREIGN KEY (`games_idx`)
+    REFERENCES `BeWe`.`games` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`users_has_games` (
+  `idx` INT NOT NULL,
+  `users_idx` INT NOT NULL,
+  `games_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_users_has_games_1_idx` (`users_idx` ASC),
+  INDEX `fk_users_has_games_2_idx` (`games_idx` ASC),
+  CONSTRAINT `fk_users_has_games_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_has_games_2`
+    FOREIGN KEY (`games_idx`)
+    REFERENCES `BeWe`.`games` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`friends` (
+  `idx` INT NOT NULL,
+  `flag` TINYINT NOT NULL DEFAULT 0,
+  `sender_idx` INT NOT NULL,
+  `receiver_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_friends_1_idx` (`sender_idx` ASC),
+  INDEX `fk_friends_2_idx` (`receiver_idx` ASC),
+  CONSTRAINT `fk_friends_1`
+    FOREIGN KEY (`sender_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_friends_2`
+    FOREIGN KEY (`receiver_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`messages` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `contents` VARCHAR(45) NOT NULL,
+  `sender_idx` INT NOT NULL,
+  `reciver_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_messages_1_idx` (`sender_idx` ASC),
+  INDEX `fk_messages_2_idx` (`reciver_idx` ASC),
+  CONSTRAINT `fk_messages_1`
+    FOREIGN KEY (`sender_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_messages_2`
+    FOREIGN KEY (`reciver_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`boards` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `contents` VARCHAR(225) NOT NULL,
+  `users_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_boards_1_idx` (`users_idx` ASC),
+  CONSTRAINT `fk_boards_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`comments` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `contents` VARCHAR(225) NOT NULL,
+  `users_idx` INT NOT NULL,
+  `boards_idx` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_comments_1_idx` (`users_idx` ASC),
+  INDEX `fk_comments_2_idx` (`boards_idx` ASC),
+  CONSTRAINT `fk_comments_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comments_2`
+    FOREIGN KEY (`boards_idx`)
+    REFERENCES `BeWe`.`boards` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `BeWe`.`achievements` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `score` MEDIUMTEXT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`));
+
+CREATE TABLE `BeWe`.`users_has_achievements` (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `users_idx` INT NOT NULL,
+  `achievements_idx` INT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  INDEX `fk_users_has_achievements_1_idx` (`users_idx` ASC),
+  INDEX `fk_users_has_achievements_2_idx` (`achievements_idx` ASC),
+  CONSTRAINT `fk_users_has_achievements_1`
+    FOREIGN KEY (`users_idx`)
+    REFERENCES `BeWe`.`users` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_has_achievements_2`
+    FOREIGN KEY (`achievements_idx`)
+    REFERENCES `BeWe`.`achievements` (`idx`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+use BeWe;
+
+insert into users values(1, 'id1', 'password', 'user1', 'email1@test.com', null, 'asdf', now());
+insert into users values(2, 'id2', 'password', 'user2', 'email2@test.com', null, 'asdf', now());
+insert into users values(3, 'id3', 'password', 'user3', 'email3@test.com', null, 'asdf', now());
+insert into users values(4, 'id4', 'password', 'user4', 'email4@test.com', null, 'asdf', now());
+insert into users values(5, 'id5', 'password', 'user5', 'email5@test.com', null, 'asdf', now());
+
+insert into friends values(1, 0, 1, 2, now());
+insert into friends values(2, 1, 2, 3, now());
+insert into friends values(3, 0, 1, 3, now());
+insert into friends values(4, 1, 3, 5, now());
+insert into friends values(5, 1, 4, 5, now());
+
+insert into messages values(1, '메시지 1', 1, 2, now());
+insert into messages values(2, '메시지 2', 1, 2, now());
+insert into messages values(3, '메시지 3', 2, 1, now());
+insert into messages values(4, '메시지 4', 2, 3, now());
+insert into messages values(5, '메시지 5', 3, 5, now());
+
+insert into games values(1, 'title1', 'description1', 'FPS', 'https://order.goobne.co.kr:8481//Upload/menu//%EA%B5%BD%EB%84%A4%EC%96%91%EB%85%90_L_01.png', 1, 1, now());
+insert into games values(2, 'title2', 'description2', 'AOS', 'https://order.goobne.co.kr:8481//Upload/menu//%EA%B5%BD%EB%84%A4%EA%B3%A0%EC%B6%94%EB%B0%94%EC%82%AC%EC%82%AD_L_01.png', 1, 2, now());
+insert into games values(3, 'title3', 'description3', 'RPG', 'https://order.goobne.co.kr:8481//Upload/menu//101030414.png', 1, 3, now());
+insert into games values(4, 'title4', 'description4', 'FPS', 'https://order.goobne.co.kr:8481//Upload/menu//%EA%B5%BD%EB%84%A4%EB%B3%BC%EC%BC%80%EC%9D%B4%EB%85%B8%EC%8C%80%EB%96%A1%EB%B3%B6%EC%9D%B4_L_01.jpg', 0, 4, now());
+insert into games values(5, 'title5', 'description5', 'AOS', 'https://order.goobne.co.kr:8481//Upload/menu//%EA%B5%BD%EB%84%A4%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%EC%B9%98%ED%82%A8_L_01.png', 0, 5, now());
+
+insert into game_result values(1, 'data', 1, now());
+insert into game_result values(2, 'data', 1, now());
+insert into game_result values(3, 'data', 1, now());
+insert into game_result values(4, 'data', 2, now());
+insert into game_result values(5, 'data', 5, now());
+
+insert into users_has_games values(1, 2, 1, now());
+insert into users_has_games values(2, 2, 3, now());
+insert into users_has_games values(3, 3, 1, now());
+insert into users_has_games values(4, 4, 1, now());
+insert into users_has_games values(5, 5, 2, now());
+
+insert into achievements values(1, '업적1', 100, now());
+insert into achievements values(2, '업적2', 90, now());
+insert into achievements values(3, '업적3', 80, now());
+insert into achievements values(4, '업적4', 70, now());
+insert into achievements values(5, '업적5', 60, now());
+
+insert into users_has_achievements values(1, 1, 1, now());
+insert into users_has_achievements values(2, 1, 2, now());
+insert into users_has_achievements values(3, 1, 3, now());
+insert into users_has_achievements values(4, 2, 1, now());
+insert into users_has_achievements values(5, 2, 5, now());
+
+insert into boards values(1, '제목1', '내용1', 1, now());
+insert into boards values(2, '제목2', '내용2', 1, now());
+insert into boards values(3, '제목3', '내용3', 2, now());
+insert into boards values(4, '제목4', '내용4', 3, now());
+insert into boards values(5, '제목5', '내용5', 4, now());
+
+insert into comments values(1, '댓글 내용 1', 1, 1, now());
+insert into comments values(2, '댓글 내용 2', 1, 1, now());
+insert into comments values(3, '댓글 내용 3', 2, 2, now());
+insert into comments values(4, '댓글 내용 4', 3, 4, now());
+insert into comments values(5, '댓글 내용 5', 4, 5, now());
+
+
