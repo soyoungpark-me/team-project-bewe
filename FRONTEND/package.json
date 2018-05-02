@@ -4,7 +4,7 @@
   "description": "SmileGate winnter server dev camp",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --port 9000 --inline --content-base .",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
