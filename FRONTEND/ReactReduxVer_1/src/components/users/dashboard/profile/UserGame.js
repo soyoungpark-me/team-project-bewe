@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PulseLoader } from 'react-spinners';
 
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';

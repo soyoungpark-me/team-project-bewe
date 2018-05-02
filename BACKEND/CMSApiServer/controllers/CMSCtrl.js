@@ -109,7 +109,7 @@ exports.getData = async(req, res, next) => {
   try {
     const gameIdx = req.params.idx;
     result = await cmsModel.getData(gameIdx);
-    result.urls = result.urls.split(',')
+    // result.urls = result.urls.split(',')
 
   } catch (error) {
     return next(error);

@@ -88,8 +88,8 @@ export default class Header extends React.Component {
 
             <NavLink to="/store" className="top-nav-item">Store</NavLink>
             <NavLink to="/mygame" className="top-nav-item">My Game</NavLink>
-            <NavLink to="/contents" className="top-nav-item">CMS</NavLink>
             <NavLink to="/rank" className="top-nav-item">Ranking</NavLink>
+            <NavLink to="/contents" className="top-nav-item">CMS</NavLink>
 
             {
               localStorage.getItem("token") ? 

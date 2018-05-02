@@ -25,3 +25,11 @@
     width: 70%;
     margin-left: 10%;
 }
+
+.home-slide-font{
+    font-family: 'Ubuntu', 'Noto sans KR', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-size: 70px;
+}

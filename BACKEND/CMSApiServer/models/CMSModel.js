@@ -1,10 +1,7 @@
 'use strict';
 
-const mysql = require('mysql');
-const DBConfig = require('./../config/DBConfig');
-const pool = mysql.createPool(DBConfig);
-
-const transactionWrapper = require('./TransactionWrapper');
+const transactionWrapper = require('../../../COMMON/TransactionWrapper');
+const pool = require('../util/db').pool;
 
 /*************
  * 게임 등록
@@ -236,6 +233,7 @@ exports.list = (inputData) => {
       `
       SELECT
         g.idx,
+        g.flag,
         g.title,
         g.genre,
         g.description,

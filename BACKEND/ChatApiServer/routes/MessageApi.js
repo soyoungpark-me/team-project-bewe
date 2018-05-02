@@ -1,10 +1,9 @@
 const validate = require('express-validation');
 
-const authCtrl = require('../controllers/AuthCtrl');
 const messageCtrl = require('../controllers/MessageCtrl');
+const authCtrl = global.authCtrl;
 
 module.exports = (router) => {
-
   /* Message */
   router.route('/messages')
     .get(authCtrl.auth, messageCtrl.list('conversations'))

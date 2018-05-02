@@ -3,7 +3,11 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const winston = require('winston');
 const cors = require('cors');
+const http = require('http');
+const redis = require('redis');
+const jwt = require('jsonwebtoken');
 const events = require('events');
 const app = express();
 
@@ -32,10 +36,17 @@ app.use((req, res, next) => {
 global.eventEmitter = new events.EventEmitter();
 global.requests = new Map();
 
+const pool = require('./util/db').pool;
+const config = require('./config/config');
+
+global.authCtrl = require('../../COMMON/Auth/AuthCtrl')
+  .setup(pool, config, redis, jwt);
+
 require('./routes')(app);
 
-//error handler
-require('./ErrorHandler')(app);
+require('../../COMMON/ErrorHandler')(app, 
+  require('./util/logger'),
+  require('express-validation'));
 
 const PORT = 3001;
 const server = app.listen(PORT, () => {

@@ -1,9 +1,6 @@
 'use strict';
 
-const mysql = require('mysql');
-const DBConfig = require('./../config/DBConfig');
-const pool = mysql.createPool(DBConfig);
-
+const pool = require('../util/db').pool;
 
 exports.listAll = () => {
   return new Promise((resolve, reject) => {
@@ -11,13 +8,13 @@ exports.listAll = () => {
       `
       SELECT
         g.idx,
+        g.flag,
         g.title,
         g.genre,
         g.description,
-        g.created_at,
-        GROUP_CONCAT(gi.url) AS urls
+        g.image,
+        g.created_at
       FROM games AS g
-        LEFT JOIN game_images AS gi ON gi.games_idx = g.idx
       WHERE g.flag = 1
       `;
     pool.query(sql, [], (err, rows) => {

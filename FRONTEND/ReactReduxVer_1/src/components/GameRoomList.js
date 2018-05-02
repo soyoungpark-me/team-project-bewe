@@ -165,51 +165,70 @@ class GameRoomList extends Component {
     }
 
     return (
-      <div style={{"width": "80%", "margin": "0 auto"}}>
+      <div className="container" style={{"padding": "30px !important" }}> 
         <Fade
           duration={fadeDuration}
         >
-        <br/>
-                <h1>TITLE</h1>
-                <InputGroup>
-                <Input placeholder="검색할 방 이름을 적어주세요" 
-                    value={this.state.keyword}
-                    name="keyword"
-                    onChange={this.handleChange}
-                />
-                &nbsp;
-                <Button color="info" 
-                    onClick={this.handleOpenModal}
-                >방 만들기</Button>
-                
-                </InputGroup>
-                <div>
+          <div className="ranking-top-menu">
+            <h2 className="ranking-top-text">Room List</h2>
+            <hr />
+            <h3 className="ranking-middle-text">
+              해당 게임의 방 리스트 입니다.
+            </h3>
+          </div>
+          <div className="mygame-roomlist-top-wrapper">
+            <InputGroup className="mygame-roomlist-input-wrapper">
+              <Input placeholder="검색할 방 이름을 적어주세요" 
+                value={this.state.keyword}
+                name="keyword"
+                onChange={this.handleChange}
+                className="mygame-roomlist-top-input"
+              />                
+            </InputGroup>
+            <Button className="mygame-roomlist-make-button"
+              onClick={this.handleOpenModal}
+              style={{"height": "50px !important"}}>
+              방 만들기
+            </Button>
+          </div>
+          <div>
         <ReactModal 
            isOpen={this.state.showModal}
            contentLabel="Inline Styles Modal Example"
            style={{
               overlay: {
                 backgroundColor: '#6c757d',
-                'marginTop':'50px',
-                opacity: 0.97
+                marginTop:'50px',
+                opacity: 0.90
+              },
+              content: {
+                borderRadius: '4px',
+                outline: 'none',
+                width: '700px',
+                height: '380px',
+                padding: '20px',
+                margin: '0 auto',
+                marginTop: '100px',
+                borderRadius: '10px',
+                opacity: 1
               }
             }}
             onRequestClose={this.handleCloseModal}
             ariaHideApp={false}
         >
-        <div style={{width:"45%", margin:"auto"}}>
-          <h1 style={{"marginTop":"15%"}}>방을 만들어 보세요</h1>
-          <input type="text" required style={{width:"50%"}} name="name"
+        <div>
+          <h3 className="mygame-modal-head">방을 만들어 보세요</h3>
+          <input type="text" required name="name" className="mygame-modal-input"
             onChange={this.handleRoomNameChange} value={this.state.createRoomName}
-            placeholder="제목을 입력해 주세요"  maxLength="20"/>
-            <br/>
-          <input type="text" required style={{width:"50%"}} name="size"
+            placeholder="제목을 입력해 주세요"  maxLength="20"/>           
+          <input type="number" required name="size" className="mygame-modal-input"
             onChange={this.handleRoomSizeChange} value={this.state.createRoomSize}
             placeholder="인원은 몇명으로 설정하실껀가요? (최대 9명)" maxLength="1" />
-            <p/>
-          <button onClick={this.handleCreateRoomModal}>만들기</button>{' '}
-          <button onClick={this.handleCloseModal}>돌아가기</button>
+          <div className="mygame-modal-button-wrapper">
+            <button className="mygame-modal-button" onClick={this.handleCreateRoomModal}>만들기</button>
+            <button className="mygame-modal-button" onClick={this.handleCloseModal}>돌아가기</button>
           </div>
+        </div>
         </ReactModal>
         </div>
         
@@ -227,13 +246,13 @@ class GameRoomList extends Component {
                 <tbody>
                     {this.state.rows.length === 0  
                         ? <tr><td colSpan="4">
-                        <center>
-                            <br/>
-                            <HashLoader
-            color={'#7F7F7F'} 
-            loading={true} 
-          />
-          <br />
+                            <center>
+                                <br/>
+                                <HashLoader
+                                color={'#7F7F7F'} 
+                                loading={true} 
+                            />
+                            <br />
                             '만들어진 방이 없거나 가져오는 중입니다.'
                         </center></td></tr>
                         : mapToComponents(this.state.rows)}

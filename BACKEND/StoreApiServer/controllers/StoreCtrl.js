@@ -1,11 +1,10 @@
 'use strict';
 
 const storeModel = require('../models/StoreModel');
-const resMsg = require('../errors');
-const client = require('redis').createClient(6379, '52.78.25.56');
+const resMsg = require('../../../COMMON/errors.json');
+const client = require('../util/db').client;
 
 exports.listAll = async(req, res, next) => {
-
   let result = '';
 
   try{
@@ -17,7 +16,6 @@ exports.listAll = async(req, res, next) => {
 
   return res.r(result);
 };
-
 
 
 /*******
@@ -54,6 +52,7 @@ exports.purchase = async(req, res, next) => {
   let result = '';
   const userIdx = req.userIdx;
   const gameIdx = req.params.idx;
+
 
   try {
     const inputData = {
@@ -183,7 +182,6 @@ exports.gameToFriendsList = async(req, res, next) => {
       return next(error);
     }
   }
-
 
   return res.r(result)
 };

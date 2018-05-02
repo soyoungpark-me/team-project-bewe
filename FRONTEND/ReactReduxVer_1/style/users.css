@@ -649,6 +649,12 @@
   border-radius: 5px;
 }
 
+.message-write:focus{
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .message-text{
   position: relative;
   display: block;

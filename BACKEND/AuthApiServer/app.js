@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const winston = require('winston');
 const cors = require('cors');
 const app = express();
 
@@ -24,12 +25,11 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 require('./routes')(app);
 
-// error handler
-require('./ErrorHandler')(app);
+require('../../COMMON/ErrorHandler')(app, 
+  require('./util/logger'),
+  require('express-validation'));
 
 const PORT = 3000;
 app.listen(PORT, () => {

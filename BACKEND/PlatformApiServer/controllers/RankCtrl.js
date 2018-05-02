@@ -1,9 +1,7 @@
 'use strict';
 
-const authModel = require('../models/AuthModel');
-
-const redis = require('redis');
-const client = redis.createClient(6379, '52.78.25.56');
+const authModel = global.authCtrl.authModel;
+const client = require('../util/db').client;
 
 function fetchRedisData(res, redisQueryKey, userIdx) {
   client.zrevrange(redisQueryKey, 0, -1, 'withscores', (err, sorted) => {

@@ -2,8 +2,8 @@
 
 
 const imageCtrl = require('../controllers/ImageCtrl');
-const authCtrl = require('../controllers/AuthCtrl');
 const cmsCtrl = require('../controllers/CMSCtrl');
+const authCtrl = global.authCtrl;
 
 module.exports = (router) => {
 

@@ -1,8 +1,7 @@
 'use strict';
 
 const notiModel = require('../models/NotiModel');
-const redis = require('redis');
-const client = redis.createClient(6379, '52.78.25.56');
+const client = require('../util/db').client;
 
 // 알림 리스트
 module.exports.list = async (req, res, next) => {

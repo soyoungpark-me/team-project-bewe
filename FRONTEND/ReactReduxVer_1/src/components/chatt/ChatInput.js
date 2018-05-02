@@ -27,12 +27,13 @@ class ChatInput extends React.Component {
 
   render() {
     return (
-      <form className="chat-input" onSubmit={this.submitHandler}>
+      <form className="message-write mygame-chat" onSubmit={this.submitHandler}>
         <input type="text"
           onChange={this.textChangeHandler}
           value={this.state.chatInput}
           placeholder="엔터를 누르세요!"
           required />
+        <button type="submit"><span className="ion-ios-paperplane-outline"></span></button>
       </form>
     );
   }

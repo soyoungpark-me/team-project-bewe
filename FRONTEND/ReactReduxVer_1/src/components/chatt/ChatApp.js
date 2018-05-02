@@ -155,67 +155,58 @@ class ChatApp extends React.Component {
     }
   }
 
-  addUsers(data){
+  addUsers(data) {
     this.setState({ 
       userList : data.rooms
     });
+    this.scrollToBottom();
   }
+
   addMessage(message) {
     const messages = this.state.messages;
     messages.push(message);
     this.setState({ messages });
   }
 
+  scrollToBottom() {
+    window.scrollTo(0,document.body.scrollHeight);
+  }
+
   render() {
     return (
       <div className="containerm">
-        <div>
-        <h3>{this.state.roomSeq}) ::: {this.state.roomName} :::
-        
-        &nbsp;
-        {
-          this.state.execgameState
-          ?
-          <ButtonGroup
-          >
-          <Button outline color="danger" 
-            onClick={this.readyHandler}
-          style={{marginTop:"0"}}
-            
-          >READY</Button>{ ' ' }
-          <Button color="info" className="exitButton"
-            onClick={this.exitHandler}
-          style={{marginTop:"0"}}
-            
-          >나가기</Button>{ ' ' }
-          <a href="BeWe://">
-          <Button onClick={this.startgameHandler}
-          style={{marginTop:"0"}}
-          >
-            실행!
-          </Button></a>
-          </ButtonGroup>
-          :
-          <ButtonGroup>
-          <Button outline color="danger" 
-          style={{marginTop:"0"}}
-          onClick={this.readyHandler}
-          >READY</Button>{ ' ' }
-          <Button color="info" className="exitButton"
-          style={{marginTop:"0"}}
-          onClick={this.exitHandler}
-          >나가기</Button>
-          </ButtonGroup>
-        }
-        </h3>
+        <div className="mygame-chat-title">
+        <h3>{this.state.roomName}</h3>        
+        <Button color="info" className="exitButton"
+          onClick={this.exitHandler}>
+          <span className="ion-close-round"></span>
+        </Button>
         
         </div>
         
-        <RoomReadyBar userList={this.state.userList} 
-          readyUsers={this.state.readyUsers}
-        />
-        <Messages messages={this.state.messages} />
-        <ChatInput onSend={this.sendHandler} />
+        <div className="mygame-chat-content-wrapper">
+          <div className="mygame-chat-left-wrapper">
+            <div className="mygame-chat-left-title">
+              <span className="ion-person-stalker"> User List</span>              
+            </div>            
+            <RoomReadyBar userList={this.state.userList} 
+              readyUsers={this.state.readyUsers}
+            />
+            {(this.state.execgameState) ? 
+              <a href="BeWe://"><Button className="mygame-chat-start-button"
+              onClick={this.startgameHandler}>START</Button></a>
+              :
+              <Button className="mygame-chat-ready-button" 
+              onClick={this.readyHandler}>READY</Button>
+            }
+            
+          </div>
+          <div className="mygame-chat-right-wrapper">
+            <Messages messages={this.state.messages} />
+            <ChatInput onSend={this.sendHandler} />
+          </div>          
+        </div>
+        
       </div>
     );
   }

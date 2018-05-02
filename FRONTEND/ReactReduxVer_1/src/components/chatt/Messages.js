@@ -22,7 +22,7 @@ class Messages extends React.Component {
       });
 
     return (
-      <div className='messages' id='messageList'>
+      <div className='messages mygame-chat-message-wrapper' id='messageList'>
         { messages }
       </div>
     );

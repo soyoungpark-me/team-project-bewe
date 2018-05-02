@@ -16,9 +16,7 @@ const RankingMenu = (props) => {
         <button onClick={props.onUserClick} className={`ranking-top-item ${props.type === 'user' ? 'active' : ''}`}>USER</button>
         <button onClick={props.onGameClick} className={`ranking-top-item ${props.type === 'game' ? 'active' : ''}`}>GAME</button>
       </div>    
-
       <hr/>  
-
       <h3 className="ranking-middle-text">
         {returnTypeText}
       </h3>

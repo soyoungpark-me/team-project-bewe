@@ -1,8 +1,8 @@
 const validate = require('express-validation');
 
-const authCtrl = require('../controllers/AuthCtrl');
 const rankCtrl = require('../controllers/RankCtrl');
 const historyCtrl = require('../controllers/HistoryCtrl');
+const authCtrl = global.authCtrl;
 
 module.exports = (router) => {
   router.route('/game/result')

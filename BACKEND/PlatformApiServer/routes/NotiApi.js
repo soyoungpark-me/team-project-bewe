@@ -1,8 +1,7 @@
 const validate = require('express-validation');
 
-const authCtrl = require('../controllers/AuthCtrl');
-
 const notiCtrl = require('../controllers/NotiCtrl');
+const authCtrl = global.authCtrl;
 
 module.exports = (router) => {
 

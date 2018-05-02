@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, IndexRoute } from "react-router-dom";
 import { connect } from 'react-redux';
 import reducers from '../reducers';
-import axios from 'axios';
 
 import { dataFetch, getNewMessage, setSocketConnected, 
   setWebNotifyEnable, setWebNotifyUnable, 
@@ -22,7 +21,9 @@ import GameRoomList from './GameRoomList';
 import StartGame from './StartGame';
 import ContentsList from './CMS/ContentsList';
 import ContentsRegister from './CMS/register/ContentsRegister';
+import ContentsAdmin from './CMS/admin/ContentsAdmin';
 import StoreLists from './store/StoreLists';
+import StoreMyLists from './store/StoreMyLists';
 import FriendBoard from './users/dashboard/friends/FriendBoard';
 
 function mapStateToProps(state) {  
@@ -144,11 +145,12 @@ class App extends Component {
             <Route path="/users" component={Dashboard} />
             <Route path="/contents/new" component={ContentsRegister} />
             <Route path="/contents" component={ContentsList} />
-            {/*<Route path="/contents/:contents_idx" component={ContentsDetail} />*/}
 
             <Route path="/gamegamelist/:gamenumber" component={GameRoomList} />
             <Route path="/startgame" component={StartGame} />
-            <Route path="/store" component={StoreLists}/>
+
+            <Route path="/admin" component={ContentsAdmin}/>
+            <Route path="/store" component={StoreLists} />
             <Route render={()=> <h1>Not found</h1>} />
           </Switch>
         {/* <Footer/> */}

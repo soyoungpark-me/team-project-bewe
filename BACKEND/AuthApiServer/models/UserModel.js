@@ -1,14 +1,10 @@
 'use strict';
 
-const mysql = require('mysql');
-const DBConfig = require('./../config/DBConfig');
-const pool = mysql.createPool(DBConfig);
-
 const jwt = require('jsonwebtoken');
-const config = require('../config/config');
 
-const redis = require('redis');
-const client = redis.createClient(6379, '52.78.25.56');
+const config = require('../config/config');
+const pool = require('../util/db').pool;
+const client = require('../util/db').client
 
 /*******************
  *  Register

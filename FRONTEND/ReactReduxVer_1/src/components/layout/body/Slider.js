@@ -11,23 +11,17 @@ const items = [
   {
     src: 'https://i.ytimg.com/vi/frrBSyEqS6c/maxresdefault.jpg',
     altText: 'Slide 1',
-    caption: <font style={{
-      color:"white", margin:"0%", fontSize:"80px", fontWeight:"700", textShadow:"0.07em 0.07em 0.1em #777777"
-    }}>Mega Value Innovator in Entertainment</font>
+    caption: <font className="home-slide-font">Mega Value Innovator in Entertainment</font>
   },
   {
     src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa20%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa20%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22218.3%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
     altText: 'Slide 2',
-    caption: <font style={{
-      color:"white", margin:"auto", fontSize:"80px", fontWeight:"500",textShadow:"0.5em 0.3em 0.15em #000"
-    }}>웹 게임의 혁명이 시작된다!</font>
+    caption: <font className="home-slide-font">웹 게임의 혁명이 시작된다!</font>
   },
   {
     src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa21%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa21%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22277%22%20y%3D%22218.3%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
     altText: 'Slide 3',
-    caption: <font style={{
-      color:"white", margin:"auto", fontSize:"80px", fontWeight:"800",textShadow:"0.5em 0.3em 0.15em #000"
-    }}>Smilegate - BeWe</font>
+    caption: <font className="home-slide-font">Smilegate - BeWe</font>
   }
 ];
 
@@ -79,7 +73,7 @@ class Slider extends Component {
         >
           {/* <img src={item.src} alt={item.altText} style={{width:"100%", height:"700px"}}/> */}
           <div style={{
-            width:"50%", height:"100px", margin:"auto", 
+            width:"50%", height:"80%", margin:"auto", 
             marginTop:"15%", marginBottom:"20%"
           }}>
           {item.caption}

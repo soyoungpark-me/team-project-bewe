@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Container, Row, Col, Badge } from 'reactstrap';
-import JumbotronB from './JumbotronB';
 import classnames from 'classnames';
+import {HashLoader} from 'react-spinners';
+import {default as Fade} from 'react-fade'
+import axios from 'axios';
+
+import JumbotronB from './JumbotronB';
+import $ from 'jquery';
+
+
+const fadeDuration = 0.3;
 
 class BodyComponent extends Component {
     constructor(props) {
         super(props);
-    
+
         this.toggle = this.toggle.bind(this);
+
         this.state = {
-          activeTab: '1'
+          activeTab: '1',
+          rows : [],
+          pageNo : 0
+          ,loadingState: false
         };
+      }
+
+      componentWillUnmount(){
+          $(window).unbind();
+          this.setState({
+              rows: []
+          })
       }
     
       toggle(tab) {
@@ -19,11 +38,62 @@ class BodyComponent extends Component {
             activeTab: tab
           });
         }
-      }
+        if(tab == 2){
+            $(window).scroll(() => {
+                if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
+                    if(!this.state.loadingState && this.state.rows.length < 40){
+
+                        axios.post(`http://localhost:3001/api/home/hash`, {
+                            'pageNo' : this.state.pageNo
+                        })
+                        .then((rows)=>{
+                            console.log(rows);
+                            return rows
+                        })
+                        .then((rows)=>{
+                            this.setState({
+                                pageNo: this.state.pageNo + 1
+                                ,rows : rows.data
+                            })
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                        this.setState({
+                            loadingState: true
+                        });
+                    }
+                }else {
+                    if(this.state.loadingState){
+                        this.setState({
+                            loadingState: false
+                        });
+                    }
+                }
+            });
+        }
+    }
+                
 
     render() {
+        const mapToComponents = (data) => {
+            return data.map((contact, i )=>{
+                return (
+                    <Col sm="3" key={i} style={{marginBottom:"3%"}}>
+                        <Card body>
+                        <CardTitle>{this.state.rows[i].title}</CardTitle>
+                        <hr />
+                        <CardText>{this.state.rows[i].contents}</CardText>
+                        <font style={{color:"blue", fontSize:"18"}}>#베스트UGC</font>
+                        <font style={{fontSize:"15"}}>{this.state.rows[i].created_at}</font>
+                        </Card>
+                    </Col>
+                )
+            })
+        }
         return (
             <div>
+                        
             <Container style={{marginBottom:"8%"}}>
                 <JumbotronB/>
                 <p/>
@@ -73,66 +143,38 @@ class BodyComponent extends Component {
                 <p/><hr/>
                 </TabPane>
                 <TabPane tabId="2">
-                    <Row style={{marginTop:"5%"}}>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    </Row>
-                    <Row style={{marginTop:"5%"}}>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card body>
-                        <CardTitle>Special Title Treatment</CardTitle>
-                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                        <Button>Go somewhere</Button>
-                        </Card>
-                    </Col>
-                    </Row>
+                    {
+                        this.state.rows.length !== 0
+                        ?
+                        <Fade duration={fadeDuration} >
+                        <Row style={{marginTop:"5%"}}>
+                        {mapToComponents(this.state.rows)}
+                        </Row>
+                        </Fade>
+                        :
+                        <center
+                            style={{marginTop:"10%"}}
+                        >
+                            <HashLoader
+                            color={'#7F7F7F'} 
+                            loading={true} 
+                            />
+                        </center>
+                    }
+                    {
+                        this.state.rows.length < 37
+                        ?
+                        <center
+                            style={{marginTop:"10%"}}
+                        >
+                            <HashLoader
+                            color={'#7F7F7F'} 
+                            loading={true} 
+                            />
+                        </center>
+                        :
+                        ''
+                    }
                 </TabPane>
                 <TabPane tabId="3">
                 <h1  style={{marginTop:"5%"}}>Today <Badge color="danger">Hot!</Badge></h1>
@@ -152,8 +194,6 @@ class BodyComponent extends Component {
                 </TabPane>
                 </TabContent>
             </div>
-
-            
                 
             </Container>
             
