@@ -10,8 +10,6 @@ const redis = require('redis');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-const room = require('./socket/room');
-
 const pub = redis.createClient(6379, '127.0.0.1');
 const sub = redis.createClient(6379, '127.0.0.1');
 

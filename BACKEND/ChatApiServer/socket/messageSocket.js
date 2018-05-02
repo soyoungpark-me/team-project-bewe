@@ -15,7 +15,7 @@ exports.clients = () => {
 
 
 exports.initialize = (pub, sub) => {
-  const PORT = 4009;  
+  const PORT = 4002;  
   
   const server = require('http').createServer();
   server.listen(PORT, () => {
