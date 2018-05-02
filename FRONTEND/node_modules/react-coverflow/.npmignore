@@ -1,6 +1,0 @@
-site
-src
-webpack.config.js
-Makefile
-.eslintrc
-test
