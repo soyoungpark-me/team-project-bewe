@@ -1,7 +1,6 @@
 'use strict';
 
-const transactionWrapper = require('../../../COMMON/TransactionWrapper');
-const pool = require('../util/db').pool;
+const transactionWrapper = require('../../COMMON/TransactionWrapper');
 
 // 전체 대화방 리스트
 exports.listConversation = (userData) => {

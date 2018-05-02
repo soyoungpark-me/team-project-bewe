@@ -1,7 +1,5 @@
 'use strict';
 
-const pool = require('../util/db').pool;
-
 exports.listAll = () => {
   return new Promise((resolve, reject) => {
     const sql =

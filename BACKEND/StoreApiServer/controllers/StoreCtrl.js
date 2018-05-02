@@ -1,8 +1,8 @@
 'use strict';
 
 const storeModel = require('../models/StoreModel');
-const resMsg = require('../../../COMMON/errors.json');
-const client = require('../util/db').client;
+const resMsg = require('../../COMMON/errors.json');
+const client = require('../../COMMON/util/db').client;
 
 exports.listAll = async(req, res, next) => {
   let result = '';

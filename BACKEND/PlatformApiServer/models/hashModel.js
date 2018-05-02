@@ -1,7 +1,5 @@
 'use strict';
 
-const pool = require('../util/db').pool;
-
 exports.list = (hashString) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT idx FROM hash WHERE tag = ?";

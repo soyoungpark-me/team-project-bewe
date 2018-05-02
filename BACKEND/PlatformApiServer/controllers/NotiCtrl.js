@@ -1,7 +1,6 @@
 'use strict';
 
 const notiModel = require('../models/NotiModel');
-const client = require('../util/db').client;
 
 // 알림 리스트
 module.exports.list = async (req, res, next) => {

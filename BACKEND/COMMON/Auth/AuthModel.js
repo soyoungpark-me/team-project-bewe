@@ -7,7 +7,7 @@ let authModel = {};
  *  @param: token
  ********************/
 exports.setup = (pool, config, redis, jwt) => {
-  const client = redis.createClient(6379, '52.78.25.56');
+  const client = redis.createClient(6379, '127.0.0.1');
 
   authModel.auth = (token, done) => {
     jwt.verify(token, config.jwt.cert, (err, decoded) => {

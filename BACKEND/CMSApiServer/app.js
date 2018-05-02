@@ -27,16 +27,16 @@ app.use((req, res, next) => {
   next();
 });
 
-const pool = require('./util/db').pool;
-const config = require('./config/config');
+const config = require('../COMMON/config/config');
 
-global.authCtrl = require('../../COMMON/Auth/AuthCtrl')
+global.pool = require('../COMMON/util/db').pool;
+global.authCtrl = require('../COMMON/Auth/AuthCtrl')
   .setup(pool, config, redis, jwt);
 
 require('./routes')(app);
 
-require('../../COMMON/ErrorHandler')(app, 
-  require('./util/logger'),
+require('../COMMON/ErrorHandler')(app, 
+  require('../COMMON/util/logger'),
   require('express-validation'));
 
 const PORT = 3003;

@@ -4,9 +4,9 @@ const mysql = require('mysql');
 const redis = require('redis');
 const jwt = require('jsonwebtoken');
 
-const config = require('../config/config');
-const pool = require('../util/db').pool;
-const client = require('../util/db').client
+const config = require('../../COMMON/config/config');
+const pool = require('../../COMMON/util/db').pool;
+const client = require('../../COMMON/util/db').client
 
 /*******************
  *  Authenticate

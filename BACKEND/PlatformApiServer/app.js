@@ -36,16 +36,17 @@ app.use((req, res, next) => {
 global.eventEmitter = new events.EventEmitter();
 global.requests = new Map();
 
-const pool = require('./util/db').pool;
-const config = require('./config/config');
+const config = require('../COMMON/config/config');
 
-global.authCtrl = require('../../COMMON/Auth/AuthCtrl')
+global.pool = require('../COMMON/util/db').pool;
+global.client = require('../COMMON/util/db').client;
+global.authCtrl = require('../COMMON/Auth/AuthCtrl')
   .setup(pool, config, redis, jwt);
 
 require('./routes')(app);
 
-require('../../COMMON/ErrorHandler')(app, 
-  require('./util/logger'),
+require('../COMMON/ErrorHandler')(app, 
+  require('../COMMON/util/logger'),
   require('express-validation'));
 
 const PORT = 3001;

@@ -12,8 +12,8 @@ const app = express();
 
 const room = require('./socket/room');
 
-const pub = redis.createClient(6379, '52.78.25.56');
-const sub = redis.createClient(6379, '52.78.25.56');
+const pub = redis.createClient(6379, '127.0.0.1');
+const sub = redis.createClient(6379, '127.0.0.1');
 
 const server = http.createServer(app);
 const io = require('./socket/socketService')(server, pub, sub);
@@ -42,16 +42,16 @@ app.use((req, res, next) => {
   next();
 });
 
-const pool = require('./util/db').pool;
-const config = require('./config/config');
+const config = require('../COMMON/config/config');
 
-global.authCtrl = require('../../COMMON/Auth/AuthCtrl')
+global.pool = require('../COMMON/util/db').pool;
+global.authCtrl = require('../COMMON/Auth/AuthCtrl')
   .setup(pool, config, redis, jwt);
 
 require('./routes')(app);
 
-require('../../COMMON/ErrorHandler')(app, 
-  require('./util/logger'),
+require('../COMMON/ErrorHandler')(app, 
+  require('../COMMON/util/logger'),
   require('express-validation'));
 
 const PORT = 4000;

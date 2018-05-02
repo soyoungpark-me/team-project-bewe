@@ -1,7 +1,6 @@
 const validate = require('express-validation');
 
 const messageCtrl = require('../controllers/MessageCtrl');
-const authCtrl = global.authCtrl;
 
 module.exports = (router) => {
   /* Message */

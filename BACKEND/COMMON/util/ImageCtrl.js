@@ -4,15 +4,13 @@ const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
-
-
-aws.config.loadFromPath('./config/aws_config.json');
+aws.config.loadFromPath('./../COMMON/config/AWSConfig.json');
 
 const s3 = new aws.S3();
 
 const storageS3 = multerS3({
   s3: s3,
-  bucket: 'bewe/games',
+  bucket: 'server-devcamp-bewe/images',
   acl: 'public-read',
   key: function (req, file, callback) {
     const fname = Date.now() + '_' + file.originalname;

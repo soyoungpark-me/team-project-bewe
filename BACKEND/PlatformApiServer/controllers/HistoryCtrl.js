@@ -2,7 +2,6 @@
 
 const moment = require('moment');
 const historyModel = require('../models/HistroyModel');
-const client = require('../util/db').client;
 
 exports.fetchResult = async(req, res, next) => {
   let result = '';

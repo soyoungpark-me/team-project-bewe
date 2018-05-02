@@ -27,8 +27,8 @@ app.use((req, res, next) => {
 
 require('./routes')(app);
 
-require('../../COMMON/ErrorHandler')(app, 
-  require('./util/logger'),
+require('../COMMON/ErrorHandler')(app, 
+  require('../COMMON/util/logger'),
   require('express-validation'));
 
 const PORT = 3000;

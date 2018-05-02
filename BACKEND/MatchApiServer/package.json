@@ -1,5 +1,5 @@
 {
-  "name": "mattApiServer",
+  "name": "matchApiServer",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,6 @@
     "express-validation": "^1.0.2",
     "joi": "^13.1.0",
     "jsonwebtoken": "^8.1.0",
-    "moment": "^2.20.1",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "nodemon": "^1.14.11",

@@ -1,7 +1,6 @@
 'use strict';
 
 const authModel = global.authCtrl.authModel;
-const client = require('../util/db').client;
 
 function fetchRedisData(res, redisQueryKey, userIdx) {
   client.zrevrange(redisQueryKey, 0, -1, 'withscores', (err, sorted) => {

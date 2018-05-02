@@ -1,7 +1,6 @@
 'use strict';
 
-const transactionWrapper = require('../../../COMMON/TransactionWrapper');
-const pool = require('../util/db').pool;
+const transactionWrapper = require('../../COMMON/TransactionWrapper');
 
 /*************
  * 게임 등록

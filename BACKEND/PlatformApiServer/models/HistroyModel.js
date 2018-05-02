@@ -1,7 +1,5 @@
 'use strict';
 
-const pool = require('../util/db').pool;
-
 exports.fetchResult = (inputData) => {
   return new Promise((resolve, reject) => {
     let insertColumn = 0;
