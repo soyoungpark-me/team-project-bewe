@@ -39,7 +39,7 @@ require('../COMMON/ErrorHandler')(app,
   require('../COMMON/util/logger'),
   require('express-validation'));
 
-const PORT = 3003;
+const PORT = 9004;
 app.listen(PORT, () => {
   console.info(`[BEWE-CMSApiServer] Listening on Port ${PORT}`);
 });

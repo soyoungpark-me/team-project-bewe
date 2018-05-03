@@ -78,7 +78,7 @@ class ChatApp extends React.Component {
       execgameState:0
     });
 
-    axios.post(`http://localhost:4001/api/deleteroom`,{
+    axios.post(`http://localhost:9007/api/deleteroom`,{
       'name': this.state.createRoomName,
       'adminUser' : JSON.parse(localStorage.getItem("profile")).nickname,
       'cnt' : this.state.createRoomSize,
@@ -87,7 +87,7 @@ class ChatApp extends React.Component {
     });
     //
     // //JSON 태웅이한테 JSON전달
-    // axios.post(`http://localhost:4001/api/execgame`,{
+    // axios.post(`http://localhost:9007/api/execgame`,{
     //   'name': this.state.createRoomName,
     //   'adminUser' : JSON.parse(localStorage.getItem("profile")).nickname,
     //   'cnt' : this.state.createRoomSize,
@@ -138,7 +138,7 @@ class ChatApp extends React.Component {
     this.props.exitHandler();
     //방장이라면
     if(this.props.username === this.props.roomSize[this.props.roomSeq-1].adminUser){
-      axios.post(`http://localhost:4001/api/deleteroom`,{
+      axios.post(`http://localhost:9007/api/deleteroom`,{
                 'name': this.state.createRoomName,
                 'adminUser' : JSON.parse(localStorage.getItem("profile")).nickname,
                 'cnt' : this.state.createRoomSize,

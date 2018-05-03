@@ -28,7 +28,7 @@ require('../COMMON/ErrorHandler')(app,
   require('../COMMON/util/logger'),
   require('express-validation'));
 
-const PORT = 4001;
+const PORT = 9007;
 app.listen(PORT, () => {
   console.info(`[BEWE-MattApiServer] Listening on Port ${PORT}`);
 });

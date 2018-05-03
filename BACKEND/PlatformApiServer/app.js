@@ -49,7 +49,7 @@ require('../COMMON/ErrorHandler')(app,
   require('../COMMON/util/logger'),
   require('express-validation'));
 
-const PORT = 3001;
+const PORT = 9002;
 const server = app.listen(PORT, () => {
   console.info(`[BEWE-PlatformApiServer] Listening on Port ${PORT}`);
 });

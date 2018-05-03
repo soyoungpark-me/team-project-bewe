@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const AUTH_URL = 'http://127.0.0.1:3000/api/users';
-const STORE_URL = 'http://127.0.0.1:3002/api/store';
-const CHAT_URL = 'http://127.0.0.1:4000/api';
+const AUTH_URL = 'http://127.0.0.1:9001/api/users';
+const STORE_URL = 'http://127.0.0.1:9003/api/store';
+const CHAT_URL = 'http://127.0.0.1:9005/api';
 
 exports.fetchOtherId = async (idx) => {
   let result = '';

@@ -5,7 +5,7 @@ import axios from 'axios';
 export const FETCH_GAME_HAS_USERS_RANK = 'FETCH_GAME_HAS_USERS_RANK';
 export const FETCH_GAME_PLAY_TIME_RANK = 'FETCH_GAME_PLAY_TIME_RANK';
 
-const API_URL = 'http://127.0.0.1:3001/api/ranks';
+const API_URL = 'http://127.0.0.1:9002/api/ranks';
 
 export function fetchGameHasUserRank(){
   let request = '';

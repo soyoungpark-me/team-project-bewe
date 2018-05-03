@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 let otherUserIdx = '';
-const API_URL = 'http://127.0.0.1:3000/api/users';
+const API_URL = 'http://127.0.0.1:9001/api/users';
 
 const fetchOtherProfile = async (idx) => {
   let result = '';

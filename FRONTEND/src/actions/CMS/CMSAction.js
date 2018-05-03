@@ -8,9 +8,9 @@ export const FETCH_POST_DETAIL = 'FETCH_POST_DETAIL';
 export const FETCH_REQUEST_ALLOW_LIST = 'FETCH_REQUEST_ALLOW_LIST';
 export const ALLOW_CONTENTS = 'ALLOW_CONTENTS';
 
-const ROOT_URL = 'http://127.0.0.1:3003/api/cms';
+const ROOT_URL = 'http://127.0.0.1:9004/api/cms';
 
-const ADMIN_URL = 'http://127.0.0.1:3003/api/admin';
+const ADMIN_URL = 'http://127.0.0.1:9004/api/admin';
 
 exports.fetchRequestAllowList = () => {
   const request = axios.get(`${ADMIN_URL}/list`, {

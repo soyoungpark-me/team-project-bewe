@@ -5,7 +5,7 @@ import axios from 'axios';
 export const FETCH_MY_PROFILE = 'FETCH_MY_PROFILE';
 export const FETCH_OTHER_PROFILE = 'FETCH_OTHER_PROFILE';
 
-const API_URL = 'http://127.0.0.1:3000/api/users';
+const API_URL = 'http://127.0.0.1:9001/api/users';
 
 // export function fetchOtherProfile(idx){
 //   const request = axios.get(`${API_URL}/${idx}`, 

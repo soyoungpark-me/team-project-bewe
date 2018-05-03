@@ -43,7 +43,7 @@ class BodyComponent extends Component {
                 if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
                     if(!this.state.loadingState && this.state.rows.length < 40){
 
-                        axios.post(`http://localhost:3001/api/home/hash`, {
+                        axios.post(`http://localhost:9002/api/home/hash`, {
                             'pageNo' : this.state.pageNo
                         })
                         .then((rows)=>{

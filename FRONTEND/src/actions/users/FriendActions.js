@@ -9,7 +9,7 @@ export const REJECT_FRIEND_REQUEST = 'REJECT_FRIEND_REQUEST';
 export const ACCEPT_FRIEND_REQUEST = 'ACCEPT_FRIEND_REQUEST';
 export const CANCEL_FRIEND_REQUEST = 'CANCEL_FRIEND_REQUEST';
 
-const API_URL = 'http://127.0.0.1:3001/api/users/friends';
+const API_URL = 'http://127.0.0.1:9002/api/users/friends';
 
 const token = JSON.parse(localStorage.getItem('token')); 
 
@@ -23,7 +23,7 @@ export function fetchFriends(){
 }
 
 export function searchFriends(values){
-  const request = axios.post(`http://127.0.0.1:3001/api/users/search`, values, {headers: {'token' : token}})
+  const request = axios.post(`http://127.0.0.1:9002/api/users/search`, values, {headers: {'token' : token}})
   
   return {
     type: SEARCH_FRIENDS,

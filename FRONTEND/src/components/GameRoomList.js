@@ -52,7 +52,7 @@ class GameRoomList extends Component {
     if (this.state.createRoomName == '' || this.state.createRoomSize == 0) {
       return
     }
-    axios.post(`http://localhost:4001/api/createroom`, {
+    axios.post(`http://localhost:9007/api/createroom`, {
       'name': this.state.createRoomName,
       'adminUser': JSON.parse(localStorage.getItem("profile")).nickname,
       'cnt': this.state.createRoomSize,
@@ -116,7 +116,7 @@ class GameRoomList extends Component {
   }
 
   roomListInterval() {
-    fetch(`http://localhost:4001/api/roomlist/${this.state.paramsGameNumber}`, {
+    fetch(`http://localhost:9007/api/roomlist/${this.state.paramsGameNumber}`, {
       method: 'get',
       headers: {
         'Accept': 'application/json, text/plain, */*',

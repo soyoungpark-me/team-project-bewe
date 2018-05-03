@@ -5,7 +5,7 @@ import axios from 'axios';
 export const FETCH_NOTIES = 'FETCH_NOTIES';
 export const CHECK_NOTI = 'CHECK_NOTI';
 
-const API_URL = 'http://127.0.0.1:3001/api/users/noti';
+const API_URL = 'http://127.0.0.1:9002/api/users/noti';
 const token = JSON.parse(localStorage.getItem('token')); 
 
 export function fetchNoties(){  

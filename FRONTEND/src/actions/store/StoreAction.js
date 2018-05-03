@@ -4,7 +4,7 @@ export const FETCH_PURCHASED_LISTS = 'FETCH_PURCHASED_LISTS';
 export const POST_GAME_PURCHASE = 'POST_GAME_PURCHASE';
 export const FETCH_STORE_LISTS = 'FETCH_STORE_LISTS';
 
-const ROOT_URL = 'http://127.0.0.1:3002/api/store';
+const ROOT_URL = 'http://127.0.0.1:9003/api/store';
 
 export function fetchStoreLists(){
   const request = axios.get(`${ROOT_URL}`, {

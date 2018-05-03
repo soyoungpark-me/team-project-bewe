@@ -31,7 +31,7 @@ require('../COMMON/ErrorHandler')(app,
   require('../COMMON/util/logger'),
   require('express-validation'));
 
-const PORT = 3000;
+const PORT = 9001;
 app.listen(PORT, () => {
   console.info(`[BEWE-AuthApiServer] Listening on Port ${PORT}`);
 });

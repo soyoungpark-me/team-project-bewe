@@ -12,8 +12,8 @@ export const SET_WEB_NOTIFY_ENABLE = 'SET_WEB_NOTIFY_ENABLE';
 export const SET_WEB_NOTIFY_UNABLE = 'SET_WEB_NOTIFY_UNABLE';
 export const SET_SOCKET_CONNECTED = 'SET_SOCKET_CONNECTED';
 
-const API_URL = 'http://127.0.0.1:3001/api/users';
-const CHAT_URL = 'http://127.0.0.1:4000/api';
+const API_URL = 'http://127.0.0.1:9002/api/users';
+const CHAT_URL = 'http://127.0.0.1:9005/api';
 const token = JSON.parse(localStorage.getItem('token'));
 
 export function dataFetch() {
@@ -37,7 +37,7 @@ export function getNewMessage(messageIdx) {
 export function setSocketConnected() {
   let socket = null;
   if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined) {
-    socket = io('http://localhost:4002', {transports: ['websocket', 'polling', 'flashsocket']});
+    socket = io('http://localhost:9006', {transports: ['websocket', 'polling', 'flashsocket']});
 
     socket.on('connect', function() {
       socket.emit('store_client_info', { customId: parseInt(JSON.parse(localStorage.getItem('profile')).idx) });

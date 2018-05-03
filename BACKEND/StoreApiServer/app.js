@@ -61,7 +61,7 @@ app.use('/graphiql',
     endpointURL: '/graphql'
   }));
 
-const PORT = 3002;
+const PORT = 9003;
 app.listen(PORT, () => {
   console.info(`[BEWE-StoreApiServer] Listening on Port ${PORT}`, `\n Test GraphQL http://localhost:${PORT}/graphiql`);
 

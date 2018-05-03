@@ -52,7 +52,7 @@ require('../COMMON/ErrorHandler')(app,
   require('../COMMON/util/logger'),
   require('express-validation'));
 
-const PORT = 4000;
+const PORT = 9005;
 server.listen(PORT, () => {
   console.info(`[BEWE-ChatApiServer] Listening on Port ${PORT}`);
 });
