@@ -25,6 +25,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
+    contentBase: './',
+    disableHostCheck: true
+    // docker에서 0.0.0.0 호스트로 배포할 수 있도록 추가
   }
 };
