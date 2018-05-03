@@ -1,5 +1,3 @@
-'use strict';
-
 const adminModel = require('../models/AdminModel');
 
 

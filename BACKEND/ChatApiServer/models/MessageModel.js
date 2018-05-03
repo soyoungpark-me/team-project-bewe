@@ -1,5 +1,3 @@
-'use strict';
-
 const transactionWrapper = require('../../COMMON/TransactionWrapper');
 
 // 전체 대화방 리스트

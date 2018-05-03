@@ -1,4 +1,3 @@
-'use strict';
 const Game = require('./GameSchema');
 
 exports.User = `

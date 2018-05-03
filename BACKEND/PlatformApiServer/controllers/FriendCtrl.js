@@ -1,5 +1,3 @@
-'use strict';
-
 const friendModel = require('../models/FriendModel');
 const notiCtrl = require('./NotiCtrl');
 

@@ -1,5 +1,3 @@
-'use strict';
-
 const moment = require('moment');
 const historyModel = require('../models/HistroyModel');
 

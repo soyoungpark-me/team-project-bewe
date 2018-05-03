@@ -1,5 +1,3 @@
-'use strict';
-
 const authModel = global.authCtrl.authModel;
 
 function fetchRedisData(res, redisQueryKey, userIdx) {

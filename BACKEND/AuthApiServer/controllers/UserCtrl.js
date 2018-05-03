@@ -1,5 +1,3 @@
-'use strict';
-
 const userModel = require('../models/UserModel');
 const config = require('../../COMMON/config/config');
 const resMsg = require('../../COMMON/errors.json');

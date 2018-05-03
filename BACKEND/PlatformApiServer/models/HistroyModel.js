@@ -1,5 +1,3 @@
-'use strict';
-
 exports.fetchResult = (inputData) => {
   return new Promise((resolve, reject) => {
     let insertColumn = 0;
