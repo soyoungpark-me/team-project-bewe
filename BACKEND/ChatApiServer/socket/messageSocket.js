@@ -1,5 +1,3 @@
-'use strict';
-
 const messageCtrl = require('../controllers/MessageCtrl');
 const socketIO = require('socket.io');
 let io = null;

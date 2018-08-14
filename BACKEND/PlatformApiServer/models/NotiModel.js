@@ -1,5 +1,3 @@
-'use strict';
-
 exports.list = (userIdx, page) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM notifications WHERE users_idx = ?";

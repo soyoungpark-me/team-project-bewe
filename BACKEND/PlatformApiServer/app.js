@@ -36,6 +36,7 @@ app.use((req, res, next) => {
 global.eventEmitter = new events.EventEmitter();
 global.requests = new Map();
 
+require('dotenv').config();
 const config = require('../COMMON/config/config');
 
 global.pool = require('../COMMON/util/db').pool;

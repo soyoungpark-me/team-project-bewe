@@ -10,8 +10,11 @@ const redis = require('redis');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-const pub = redis.createClient(6379, '127.0.0.1');
-const sub = redis.createClient(6379, '127.0.0.1');
+require('dotenv').config();
+const pub = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+pub.auth(process.env.REDIS_PASSWORD);
+const sub = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+sub.auth(process.env.REDIS_PASSWORD);
 
 const server = http.createServer(app);
 const io = require('./socket/socketService')(server, pub, sub);
@@ -40,6 +43,7 @@ app.use((req, res, next) => {
   next();
 });
 
+require('dotenv').config();
 const config = require('../COMMON/config/config');
 
 global.pool = require('../COMMON/util/db').pool;

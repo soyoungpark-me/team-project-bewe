@@ -25,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
+require('dotenv').config();
 require('./routes')(app);
 
 require('../COMMON/ErrorHandler')(app, 

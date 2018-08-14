@@ -36,6 +36,7 @@ app.use((req, res, next) => {
 });
 
 
+require('dotenv').config();
 const config = require('../COMMON/config/config');
 global.pool = require('../COMMON/util/db').pool;
 

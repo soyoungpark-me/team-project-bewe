@@ -1,5 +1,3 @@
-'use strict';
-
 exports.list = (hashString) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT idx FROM hash WHERE tag = ?";

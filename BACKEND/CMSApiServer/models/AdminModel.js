@@ -1,5 +1,3 @@
-'use strict';
-
 const transactionWrapper = require('../../COMMON/TransactionWrapper');
 
 exports.reqAllowContents = () => {

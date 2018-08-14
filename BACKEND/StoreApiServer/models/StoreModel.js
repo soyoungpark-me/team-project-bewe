@@ -1,5 +1,3 @@
-'use strict';
-
 exports.listAll = () => {
   return new Promise((resolve, reject) => {
     const sql =

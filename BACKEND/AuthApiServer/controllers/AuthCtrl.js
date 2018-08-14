@@ -1,5 +1,3 @@
-'use strict';
-
 const authModel = require('../models/AuthModel');
 
 /*******************

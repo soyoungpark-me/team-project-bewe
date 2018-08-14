@@ -1,6 +1,3 @@
-'use strict';
-
-
 const imageCtrl = require('../../COMMON/util/ImageCtrl');
 const storeCtrl = require('../controllers/StoreCtrl');
 const authCtrl = global.authCtrl;

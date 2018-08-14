@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('dotenv').config();
 const pool = require('../COMMON/util/db').pool;
 const config = require('../COMMON/config/config');
 

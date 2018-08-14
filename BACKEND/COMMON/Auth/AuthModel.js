@@ -1,5 +1,3 @@
-'use strict';
-
 let authModel = {};
 
 /*******************
@@ -7,7 +5,8 @@ let authModel = {};
  *  @param: token
  ********************/
 exports.setup = (pool, config, redis, jwt) => {
-  const client = redis.createClient(6379, '127.0.0.1');
+  const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+  client.auth(process.env.REDIS_PASSWORD);
 
   authModel.auth = (token, done) => {
     jwt.verify(token, config.jwt.cert, (err, decoded) => {

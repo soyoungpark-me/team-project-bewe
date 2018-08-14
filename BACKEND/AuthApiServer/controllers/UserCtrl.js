@@ -1,5 +1,3 @@
-'use strict';
-
 const userModel = require('../models/UserModel');
 const config = require('../../COMMON/config/config');
 const resMsg = require('../../COMMON/errors.json');
@@ -109,7 +107,7 @@ exports.login = async(req, res, next) => {
       id: result.profile.id,
       nickname: result.profile.nickname,
       // ip: req.body.ip,
-      ip: '127.0.0.1'
+      ip: process.env.REDIS_HOST
     };
     await userModel.setSession(sessionData);
   } catch (error) {

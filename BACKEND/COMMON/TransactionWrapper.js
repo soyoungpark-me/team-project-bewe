@@ -1,5 +1,3 @@
-'use strict';
-
 exports.getConnection = (pool) => {
   return new Promise((resolve, reject) => {
 
