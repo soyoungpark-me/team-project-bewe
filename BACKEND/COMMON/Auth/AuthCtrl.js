@@ -1,3 +1,5 @@
+'use strict';
+
 const authModelSetup = require('./AuthModel');
 
 /*******************

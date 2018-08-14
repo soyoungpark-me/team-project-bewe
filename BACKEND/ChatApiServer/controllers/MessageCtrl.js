@@ -1,3 +1,5 @@
+'use strict';
+
 const messageModel = require('../models/MessageModel');
 
 // 전체 대화방 리스트

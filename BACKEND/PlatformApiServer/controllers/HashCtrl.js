@@ -1,3 +1,5 @@
+// 'use strict';
+
 const hashModel = require('../models/hashModel');
 
 // 내 친구 리스트

@@ -1,3 +1,5 @@
+'use strict';
+
 const cmsModel = require('../models/CMSModel');
 
 

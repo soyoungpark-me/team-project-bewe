@@ -1,3 +1,5 @@
+'use strict';
+
 const adminCtrl = require('../controllers/AdminCtrl');
 const authCtrl = global.authCtrl;
 

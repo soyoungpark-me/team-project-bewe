@@ -1,3 +1,5 @@
+'use strict';
+
 const transactionWrapper = require('../../COMMON/TransactionWrapper');
 
 // 친구 리스트

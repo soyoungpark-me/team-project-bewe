@@ -1,3 +1,5 @@
+'use strict';
+
 const roomCtrl = require('../controllers/RoomCtrl');
 const authCtrl = global.authCtrl;
 

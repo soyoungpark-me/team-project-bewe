@@ -1,3 +1,5 @@
+'use strict';
+
 const notiModel = require('../models/NotiModel');
 
 // 알림 리스트

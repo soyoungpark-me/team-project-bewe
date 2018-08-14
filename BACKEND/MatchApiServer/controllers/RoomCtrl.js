@@ -1,3 +1,5 @@
+'use strict';
+
 let gameRooms = [[], [], [], [], [], [], [], [], [], [], []];
 
 exports.findSeq = (req,res,next) => {

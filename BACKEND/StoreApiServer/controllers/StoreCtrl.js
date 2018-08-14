@@ -1,3 +1,5 @@
+'use strict';
+
 const storeModel = require('../models/StoreModel');
 const resMsg = require('../../COMMON/errors.json');
 const client = require('../../COMMON/util/db').client;

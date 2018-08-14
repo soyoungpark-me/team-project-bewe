@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const list = fs.readdirSync(__dirname).filter(dir => !dir.match(/(^\.)|index/i));
 const router = require('express').Router();
