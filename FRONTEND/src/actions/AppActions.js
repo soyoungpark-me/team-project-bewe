@@ -37,7 +37,7 @@ export function getNewMessage(messageIdx) {
 export function setSocketConnected() {
   let socket = null;
   if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined) {
-    socket = io('http://localhost:9006', {transports: ['websocket', 'polling', 'flashsocket']});
+    socket = io('http://localhost:9006', {transports: ['websocket']});
 
     socket.on('connect', function() {
       socket.emit('store_client_info', { customId: parseInt(JSON.parse(localStorage.getItem('profile')).idx) });
